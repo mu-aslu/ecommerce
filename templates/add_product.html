@@ -1,0 +1,60 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body{
+      background-image: url(https://www.esds.co.in/blog/wp-content/uploads/2019/09/How-AI-is-Taking-Over-the-Indian-Online-Food-Delivery-Industry.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+  <div class="container">
+      <div class="row">
+        
+      <div class="col-md-4"></div>
+      
+      
+      <div class="col-md-4" style="margin-top: 7%;">
+        <div class="col-md-12">{% for message in messages %}
+            <h5>
+                <div class="alert alert-danger">
+                    {{message}}
+                </div>
+            </h5>
+            {% endfor %}</div>
+  <form method="post" action="{% url 'add_pro' %}" enctype="multipart/form-data" style="background-color: rgb(250, 250, 250); height: auto;width: auto; padding-top: 10px; border-radius: 10px;padding-left: 20px;padding-right: 20px;margin-bottom: 50px;">
+      {% csrf_token %}
+      
+      <div class="form-outline">
+        <h3 style="text-align: center;justify-content: center;">Add Product</h3>
+        Product Name:
+        <input type="text" name="pname"  class="form-control" placeholder="Product Name" /> <br>
+      </div>
+      <div class="form-outline ">Description
+        <input type="address" name="pdes" class="form-control" placeholder="Description" /><br>
+      </div>
+      <div class="form-outline ">
+        <select name="sel" class="form-control">
+         <option value="">Select Category</option>
+         {% for c in cat %}
+         <option value="{{c.id}}">{{c.category_name}}</option>
+         {% endfor %}
+        </select>
+       </div> <br>
+      <div class="form-outline ">Product price:
+        <input type="number" name="price " class="form-control" placeholder="Price" /><br>
+      </div>
+      <div class="form-outline ">
+        Upload Photo
+        <input type="file" name="file" class="form-control mt-3" accept="image/*">
+      </div> <br>
+       
+      <button type="submit" class="btn btn-primary btn-block " style="border-radius: 30px;">Submit</button>
+    
+     <br><br>
+    </form>
+  </div>
+    <div class="col-md-4"></div>
+  </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+
+
+<style>
+    body{
+        background-image: url(https://arkalivebackup.s3.us-east-2.amazonaws.com/uploads/2020/05/header_banner-3.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+ 
+
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.image-frame {
+  flex: 1;
+}
+
+.image-frame img {
+  width: 100%;
+  height: auto;
+}
+
+.login-form {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.message {
+  color: #ff0000; /* or any other color for error messages */
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  
+  
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Optional: Add hover effect for links */
+ul li a:hover {
+  text-decoration: underline;
+}
+
+</style>
+<div class="login-container">
+    <div class="image-frame">
+      <img src="https://cheapjerseys-shopping.com/wp-content/uploads/2023/01/people-eating-lunchboxes-grey-table-top-view-healthy-food-delivery-161242402.jpg" alt="Image">
+    </div>
+    <div class="login-form">
+      <h2>Login</h2>
+  
+      {% for message in messages %}
+        <p class="message">{{ message }}</p>
+      {% endfor %}
+  
+      <form action="{% url 'log_in' %}" method="post">
+        {% csrf_token %}
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+  
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+  
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  <br><br>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>Email: info@example.com</p>
+        <p>Phone: +1 123-456-7890</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+          <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+          <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+{% endblock %}

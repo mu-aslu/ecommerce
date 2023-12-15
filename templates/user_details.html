@@ -1,0 +1,80 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    img {
+        height: 100px;
+        width: 100px;
+    }
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #06ec1d;
+  padding: 12px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #1ee908;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #ebf0ec;
+}
+
+/* Optional: Add hover effect for better user experience */
+.custom-table tbody tr:hover {
+  background-color: #bb3333;
+}
+</style>
+
+
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Profile Picture</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in mem %}
+                        <tr>
+                            <td class="pt-4">{{ user.user.username }}</td>
+                            <td class="pt-4">{{ user.address }}</td>
+                            <td class="pt-4">{{ user.number }}</td>
+                            <td class="pt-4">{{ user.user.email }}</td>
+                            <td class="pt-4">
+                                {% if user.image %}
+                                    <img src="{{ user.image.url }}"  style="height: 100px; width: 100px;">
+                                {% else %}
+                                    No image available
+                                {% endif %}
+                            </td>
+                            <td>
+                                
+                                <a role="button" class="btn btn-light btn-sm" href="{% url 'delete_user' user.id %}">delete</a>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

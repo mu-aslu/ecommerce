@@ -1,0 +1,78 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    img {
+        height: 100px;
+        width: 100px;
+    }
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.custom-table th, .custom-table td {
+  border: 1px solid #06ec1d;
+  padding: 12px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: #1ee908;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #ebf0ec;
+}
+
+/* Optional: Add hover effect for better user experience */
+.custom-table tbody tr:hover {
+  background-color: #bb3333;
+}
+
+</style>
+
+
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in prod %}
+                        <tr>
+                            <td class="pt-4">{{ product.name }}</td>
+                            <td class="pt-4">{{ product.description }}</td>
+                            <td class="pt-4">{{ product.price }}</td>
+                            <td class="pt-4">{{ product.category.category_name }}</td>
+                            <td class="pt-4">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}"  style="height: 100px; width: 100px;">
+                                {% else %}
+                                    No image available
+                                {% endif %}
+                            </td>
+                            <td>
+                                
+                                <a role="button" class="btn btn-light btn-sm" href="{% url 'delete_prod' product.id %}">delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+   
+
+{% endblock %}

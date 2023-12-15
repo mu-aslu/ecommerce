@@ -1,0 +1,47 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body{
+        
+        background-image: url(https://www.gloriafood.com/wp-content/uploads/2021/09/How-to-Devise-a-Marketing-Strategy-for-Your-Food-Delivery-Service-Facebook.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    img {
+       
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #0a0a0a;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 0;
+      display: block; 
+    }
+
+    img:hover {
+      opacity: 0.8;
+      transition: opacity 0.3s ease-in-out;
+    }
+</style>
+<div class="container">
+    <div class="row">
+<div class="col-md-12">{% for message in messages %}
+    <h5>
+        <div class="alert alert-danger">
+            {{message}}
+        </div>
+    </h5>
+    {% endfor %}</div></div>
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;justify-content: center;margin-top: 20%;"><h1>WELCOME</h1></div>
+    </div>
+<br><br><br>
+</div>
+<h2 style="text-align: center;">Your Improvements</h2>
+<br><br>
+<img src="https://www.vaneck.com/contentassets/243b38478da14acf87b22ccf669274f4/eme_ondemandfooddelivery_2020.11.png">
+
+
+<br><br><br><br>
+{% endblock %}

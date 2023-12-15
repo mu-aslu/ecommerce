@@ -1,0 +1,145 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+    <style>
+        body{
+          
+        background-image: url(https://media.gettyimages.com/id/1347857566/vector/vector-set-of-illustration-e-commerce-concept-line-art-style-background-design-for-web-page.jpg?s=612x612&w=gi&k=20&c=IlnBESGp_qK3eN94mNZX7J56Fg5C31m_UO7UBd4TuYw=);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Optional: Add hover effect for links */
+ul li a:hover {
+  text-decoration: underline;
+}
+          
+        
+      </style>
+      <div class="container">
+          <div class="row">
+            
+          <div class="col-md-4"></div>
+          
+          
+          <div class="col-md-4" style="margin-top: 7%;">
+            <div class="col-md-4">{% for message in messages %}
+                <h5>
+                    <div class="alert alert-danger">
+                        {{message}}
+                    </div>
+                </h5>
+                {% endfor %}</div>
+      <form method="post" action="{% url 'add_user' %}" enctype="multipart/form-data" style="background-color: rgb(250, 250, 250); height: 900px;width: 500px; padding-top: 10px; border-radius: 10px;padding-left: 20px;padding-right: 20px;">
+          {% csrf_token %}
+          
+          <div class="form-outline">
+            <h3 style="text-align: center;justify-content: center;">User Registration</h3>
+            First Name:
+            <input type="text" name="first_name"  class="form-control" placeholder="First Name" /> <br>
+          </div>
+          <div class="form-outline ">Last Name:
+            <input type="address" name="last_name" class="form-control" placeholder="Last Name" /><br>
+          </div>
+          <div class="form-outline ">Username:
+            <input type="text" name="uname" class="form-control" placeholder="Username" /><br>
+          </div>
+          <div class="form-outline ">Password:
+            <input type="password" name="password" class="form-control" placeholder="Password" /><br>
+          </div>
+          <div class="form-outline ">Confirm Password:
+            <input type="password" name="cpassword" class="form-control" placeholder="Confirm Password" /><br>
+          </div>
+          <div class="form-outline ">Address:
+            <input type="text" name="address" class="form-control" placeholder="Address" /><br>
+          </div>
+          <div class="form-outline ">Email
+            <input type="email" name="email" class="form-control" placeholder="Email" /><br>
+          </div>
+          <div class="form-outline ">Phn NO:
+            <input type="text" name="number" class="form-control" placeholder="Contact Number" /><br>
+          </div>
+          <div class="form-outline ">
+            Upload Your Photo
+            <input type="file" name="file" class="form-control mt-3" accept="image/*">
+          </div> <br>
+          <button type="submit" class="btn btn-primary btn-block " style="border-radius: 30px;">Submit</button>
+        
+         
+        </form>
+      </div>
+      
+      </div>
+      </div>
+      <br><br>
+      <footer>
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#menu">Menu</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: info@example.com</p>
+            <p>Phone: +1 123-456-7890</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+              <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+              <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      </body>
+      </html>
+      {% endblock %}

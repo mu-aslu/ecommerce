@@ -1,0 +1,87 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    body{
+      background-image: url(https://www.netsolutions.com/insights/wp-content/uploads/2021/11/essential-feature-of-building-an-on-demand-food-ordering-app.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+.login-form {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.message {
+  color: #ff0000; /* or any other color for error messages */
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  
+  
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+  </style>
+ 
+  <div class="login-form">
+    
+
+    {% for message in messages %}
+      <p class="message">{{ message }}</p>
+    {% endfor %}
+
+   
+      
+      <form method="post" action="{% url 'addc' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+  <div class="login-container">
+    <form class="login-form">
+      
+      <label for="add category">ADD CATEGORY:</label>
+      <input type="text"  name="cname" placeholder="Enter CATEGORY" required>
+  
+      
+  
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+
+
+
+  <BR>
+{% endblock %}
